@@ -178,7 +178,6 @@ client.on('messageReactionAdd', async (reaction, user) => {
 const app = express();
 app.use(bodyParser.json());
 
-const cors = require('cors');
 app.use(cors({
   origin: '*', // hoặc cụ thể 'http://your-website.com'
   methods: ['GET', 'POST', 'OPTIONS'],
