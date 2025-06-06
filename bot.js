@@ -194,7 +194,7 @@ app.use(cors({
 }));
 
 
-const PORT = process.env.BOT_API_PORT || 3001;
+const PORT = process.env.PORT || 3001;
 
 const multer = require('multer');
 const upload = multer();
