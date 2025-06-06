@@ -14,6 +14,7 @@ const client = new Client({
 });
 
 const serviceAccount = JSON.parse(process.env.SERVICE_ACCOUNT_JSON);
+console.log('SERVICE_ACCOUNT_JSON raw:', process.env.SERVICE_ACCOUNT_JSON);
 console.log('Loaded serviceAccount keys:', Object.keys(serviceAccount));
 
 try {
