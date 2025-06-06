@@ -13,16 +13,8 @@ const client = new Client({
   ]
 });
 
-console.log('SERVICE_ACCOUNT_JSON raw:', process.env.SERVICE_ACCOUNT_JSON);
-
-let serviceAccount = {};
-try {
-  serviceAccount = JSON.parse(process.env.SERVICE_ACCOUNT_JSON);
-  console.log('Loaded serviceAccount keys:', Object.keys(serviceAccount));
-} catch (error) {
-  console.error('Failed to parse SERVICE_ACCOUNT_JSON:', error);
-  process.exit(1);
-}
+const serviceAccount = JSON.parse(process.env.SERVICE_ACCOUNT_JSON);
+console.log('Loaded serviceAccount keys:', Object.keys(serviceAccount));
 
 try {
   admin.initializeApp({
