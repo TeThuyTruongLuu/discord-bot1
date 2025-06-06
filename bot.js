@@ -4,11 +4,6 @@ const admin = require('firebase-admin');
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-app.use(cors({
-  origin: '*', // hoặc cụ thể 'http://your-website.com'
-  methods: ['GET', 'POST', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization']
-}));
 
 const client = new Client({
   intents: [
@@ -182,6 +177,14 @@ client.on('messageReactionAdd', async (reaction, user) => {
 // 🚀 Thêm API Express cho client gọi
 const app = express();
 app.use(bodyParser.json());
+
+const cors = require('cors');
+app.use(cors({
+  origin: '*', // hoặc cụ thể 'http://your-website.com'
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
 
 const PORT = process.env.BOT_API_PORT || 3001;
 
