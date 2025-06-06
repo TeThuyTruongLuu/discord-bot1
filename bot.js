@@ -13,8 +13,7 @@ const client = new Client({
   ]
 });
 
-const serviceAccount = require('./serviceAccount.json');
-
+const serviceAccount = JSON.parse(Buffer.from(process.env.SERVICE_ACCOUNT_JSON_BASE64, 'base64').toString('utf-8'));
 console.log('Loaded serviceAccount keys:', Object.keys(serviceAccount));
 
 try {
