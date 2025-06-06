@@ -250,3 +250,20 @@ client.login(process.env.DISCORD_BOT_TOKEN).catch(error => {
   console.error('Lỗi đăng nhập bot:', error);
   process.exit(1);
 });
+
+async function startApp() {
+  try {
+    await client.login(process.env.DISCORD_BOT_TOKEN);
+    console.log(`Bot đã sẵn sàng! Đăng nhập với tên: ${client.user.tag}`);
+
+    app.listen(PORT, () => {
+      console.log(`Bot API server đang lắng nghe tại port ${PORT}`);
+    });
+  } catch (error) {
+    console.error('Lỗi đăng nhập bot:', error);
+    process.exit(1);
+  }
+}
+
+startApp();
+
