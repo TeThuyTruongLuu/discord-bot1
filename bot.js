@@ -13,8 +13,17 @@ const client = new Client({
   ]
 });
 
-const serviceAccount = JSON.parse(Buffer.from(process.env.SERVICE_ACCOUNT_JSON_BASE64, 'base64').toString('utf-8'));
-console.log('Loaded serviceAccount keys:', Object.keys(serviceAccount));
+let serviceAccount;
+
+if (process.env.SERVICE_ACCOUNT_JSON_BASE64) {
+  const decoded = Buffer.from(process.env.SERVICE_ACCOUNT_JSON_BASE64, 'base64').toString('utf-8');
+  serviceAccount = JSON.parse(decoded);
+  console.log('Loaded serviceAccount from BASE64 ENV');
+} else {
+  serviceAccount = require('./serviceAccount.json');
+  console.log('Loaded serviceAccount from local file');
+}
+
 
 try {
   admin.initializeApp({
