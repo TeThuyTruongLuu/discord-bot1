@@ -242,15 +242,6 @@ app.post('/send-message', upload.single('file'), async (req, res) => {
 });
 
 
-app.listen(PORT, () => {
-  console.log(`Bot API server đang lắng nghe tại port ${PORT}`);
-});
-
-client.login(process.env.DISCORD_BOT_TOKEN).catch(error => {
-  console.error('Lỗi đăng nhập bot:', error);
-  process.exit(1);
-});
-
 async function startApp() {
   try {
     await client.login(process.env.DISCORD_BOT_TOKEN);
