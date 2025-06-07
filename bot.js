@@ -188,10 +188,11 @@ const app = express();
 app.use(bodyParser.json());
 
 app.use(cors({
-  origin: '*', // hoặc cụ thể 'http://your-website.com'
+  origin: ['https://tethuytruongluu.github.io'],
   methods: ['GET', 'POST', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
+
 
 
 const PORT = process.env.PORT || 3001;
