@@ -187,8 +187,21 @@ client.on('messageReactionAdd', async (reaction, user) => {
 const app = express();
 app.use(bodyParser.json());
 
+const allowedOrigins = [
+  'http://localhost:3000',
+  'http://127.0.0.1:3000',
+  'https://tethuytruongluu.github.io'
+];
+
 app.use(cors({
-  origin: ['https://tethuytruongluu.github.io'],
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      console.log(`Blocked by CORS: ${origin}`);
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   methods: ['GET', 'POST', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
