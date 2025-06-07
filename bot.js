@@ -213,7 +213,7 @@ const PORT = process.env.PORT || 3001;
 const multer = require('multer');
 const upload = multer();
 
-app.post('/send-message', upload.single('file'), async (req, res) => {
+app.post('/send-message', cors(), upload.single('file'), async (req, res) => {
   try {
     const payload_json = req.body.payload_json;
     console.log('Nhận payload_json:', payload_json);
